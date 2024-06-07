@@ -12,6 +12,9 @@ const sourceFile = path.resolve(
 const destinationDir = path.resolve(__dirname, "..", "src", "data");
 const destinationFile = path.join(destinationDir, "geoip-country.dat");
 
+console.log("Source file:", sourceFile);
+console.log("Destination directory:", destinationDir);
+
 try {
   fs.mkdirSync(destinationDir, { recursive: true });
   if (fs.existsSync(sourceFile)) {
