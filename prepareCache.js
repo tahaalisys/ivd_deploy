@@ -10,11 +10,16 @@ const sourceFile = path.resolve(
   "geoip-country.dat"
 );
 const destinationDir = path.resolve(__dirname, "..", "src", "data");
+const destinationFile = path.join(destinationDir, "geoip-country.dat");
 
 try {
   fs.mkdirSync(destinationDir, { recursive: true });
-  fs.copyFileSync(sourceFile, path.join(destinationDir, "geoip-country.dat"));
-  console.log("geoip-country.dat copied successfully.");
+  if (fs.existsSync(sourceFile)) {
+    fs.copyFileSync(sourceFile, destinationFile);
+    console.log("geoip-country.dat copied successfully.");
+  } else {
+    console.error("Error: geoip-country.dat not found.");
+  }
 } catch (err) {
   console.error("Error copying geoip-country.dat:", err);
 }
