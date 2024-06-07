@@ -3,12 +3,13 @@ const path = require("path");
 
 const sourceFile = path.resolve(
   __dirname,
+  "..",
   "node_modules",
   "geoip-lite",
   "data",
   "geoip-country.dat"
 );
-const destinationDir = path.resolve(__dirname, "src", "data");
+const destinationDir = path.resolve(__dirname, "..", "src", "data");
 
 try {
   fs.mkdirSync(destinationDir, { recursive: true });
