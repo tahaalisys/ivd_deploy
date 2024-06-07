@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/src/index.js" }],
-  "files": [
-    "src/**",
+  "builds": [
+    { "src": "src/index.js", "use": "@vercel/node" },
     {
-      "source": "node_modules/geoip-lite/data/geoip-country.dat",
-      "destination": "/var/task/node_modules/geoip-lite/data/geoip-country.dat"
+      "src": "node_modules/geoip-lite/data/**",
+      "use": "@vercel/node-filesystem"
     }
-  ]
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/src/index.js" }]
 }
